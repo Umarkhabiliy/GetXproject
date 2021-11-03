@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergetx/screens/home_page.dart';
+import 'package:fluttergetx/screens/home/home_page.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,10 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primarySwatch: Colors.blue,
       ),
       home:MyHomePage()
     );
