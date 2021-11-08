@@ -2,10 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttergetx/widgets/custom_text_widget.dart';
+import 'package:get/get.dart';
 
 class InsideHeaders extends StatelessWidget {
   InsideHeaders({Key? key, this.tabController}) : super(key: key);
   TabController? tabController;
+  final titlee = Get.arguments['rasm'];
+  
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -30,7 +33,9 @@ class InsideHeaders extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 BackButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.back();
+                                  },
                                 ),
                                 Stack(
                                   children: [
@@ -62,26 +67,26 @@ class InsideHeaders extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                            const  TabPageSelector(
-                                color: Colors.white,
+                            children: const [
+                              Align(
+                                alignment: Alignment.center,
+                                child: TabPageSelector(
+                                  selectedColor: Colors.blueAccent,
+                                  color: Colors.white,
+                                ),
                               ),
-                              TabPageSelectorIndicator(
-                                  backgroundColor: Colors.blue.shade100,
-                                  borderColor: Colors.transparent,
-                                  size: 12)
                             ],
                           ),
                         ),
                       ],
                     ),
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(
-                          "assets/sd.webp",
-                        ),
+                        image: NetworkImage(titlee[0].toString()),
+                        // AssetImage(
+
+                        //   "assets/sd.webp",
+                        // ),
                         fit: BoxFit.cover,
                       ),
                     ),

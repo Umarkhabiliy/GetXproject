@@ -2,12 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttergetx/widgets/custom_text_widget.dart';
+import 'package:get/get.dart';
 
 class Headers extends StatelessWidget {
   const Headers({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final titlee = Get.arguments;
     return SizedBox(
       height: MediaQuery.of(context).size.height / 2.4.h,
       child: ClipRRect(
@@ -71,9 +73,7 @@ class Headers extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 2.4.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image:
-                          //  AssetImage("assets/main.png",), fit: BoxFit.fill
-                          NetworkImage(
+                      image: NetworkImage(
                         "https://sydneylashandbrow.com/wp-content/uploads/2020/12/neve-web-design-studio-03.1.jpg",
                       ),
                       fit: BoxFit.cover),
