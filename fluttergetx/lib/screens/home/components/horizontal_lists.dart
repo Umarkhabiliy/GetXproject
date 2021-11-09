@@ -12,71 +12,71 @@ class HorizontalLists extends StatelessWidget {
     return SizedBox(
       height: 200.h,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-            itemCount: 3,
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                mainAxisSpacing: 14.w,
-                childAspectRatio: 1.2.w),
-            itemBuilder: (ctx, index) {
-              return GestureDetector(
-                onTap: () {
-                  debugPrint('bosildi $index');
-                  Get.to(InsidePage(), arguments: {
-                    "rasm": [pictures[index]['hoodei'].toString(),namee[index]['nam'].toString(), pricee[index]['pri'].toString(),],
-                    
-                    
-                  });
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8)),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: Image.network(
-                              pictures[index]['hoodei'].toString(),
-                              fit: BoxFit.fitWidth,
-                            ),
+          padding: const EdgeInsets.all(8.0),
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: 3,
+              itemBuilder: (ctx, index) {
+                return GestureDetector(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Container(
+                          width: 120.w,
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Image.network(
+                                  pictures[index]['hoodei'].toString(),
+                                  fit: BoxFit.cover,
+                                  width: MediaQuery.of(context).size.width.w,
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.center,
+                                child: TextWidget(
+                                  text: namee[index]['nam'].toString(),
+                                  color: Colors.grey.withOpacity(0.5),
+                                  size: 16.sp,
+                                  weight: FontWeight.w400,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    TextWidget(
+                                      text: pricee[index]['pri'].toString(),
+                                      size: 18.sp,
+                                      weight: FontWeight.w700,
+                                    ),
+                                    TextWidget(
+                                      text: "  Sale",
+                                      size: 14,
+                                      color: Colors.grey.shade400,
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: TextWidget(
-                          text: namee[index]['nam'].toString(),
-                          color: Colors.grey.withOpacity(0.8),
-                          size: 16.sp,
-                          weight: FontWeight.w600,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            TextWidget(
-                              text: pricee[index]['pri'].toString(),
-                              size: 18.sp,
-                              weight: FontWeight.w900,
-                            ),
-                            TextWidget(text: "Sale")
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              );
-            }),
-      ),
+                    ),
+                    onTap: () {
+                      Get.to(InsidePage(), arguments: {
+                        "rasm": [
+                          pictures[index]['hoodei'].toString(),
+                          namee[index]['nam'].toString(),
+                          pricee[index]['pri'].toString(),
+                        ],
+                      });
+                    });
+              })),
     );
   }
 }
@@ -102,7 +102,7 @@ var namee = [
   {"nam": "Blue"},
 ];
 var pricee = [
-  {"pri": "12som"},
-  {"pri": "54som"},
-  {"pri": "100som"},
+  {"pri": "12.50\$"},
+  {"pri": "54.99\$"},
+  {"pri": "100 \$"},
 ];

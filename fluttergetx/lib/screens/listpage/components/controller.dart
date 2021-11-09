@@ -3,11 +3,12 @@ import 'package:get/get.dart';
 
 class Addcart extends GetxController {
   List<Product> listTiles = [];
-  setProduct({valueName, valuePrice, valueSize}) {
+  setProduct({valueName, valuePrice, valueSize, valueColor}) {
     listTiles.add(Product(
         productName: valueName,
         pruductPrice: valuePrice,
-        pruductSize: valueSize));
+        pruductSize: valueSize,
+        productColor: valueColor));
     update();
   }
 
