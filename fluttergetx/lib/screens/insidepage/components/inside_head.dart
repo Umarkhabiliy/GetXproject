@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 class InsideHeaders extends StatelessWidget {
   InsideHeaders({Key? key, this.tabController}) : super(key: key);
   TabController? tabController;
-  final titlee = Get.arguments['rasm'];
+  final titlee = Get.arguments['info'];
   
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,7 @@ class InsideHeaders extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(titlee[0].toString()),
+                      image: NetworkImage(titlee['images'].toString()),
                       // AssetImage(
 
                       //   "assets/sd.webp",

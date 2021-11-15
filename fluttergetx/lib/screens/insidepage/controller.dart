@@ -15,8 +15,9 @@ class ButtonController extends GetxController {
 
   cicrleClicked(index) {
     selectedCircle = index;
-    colorsCircle = List.generate(5, (index) => Colors.transparent);
+    colorsCircle = List.generate(4, (index) => Colors.transparent);
     colorsCircle[selectedCircle] = Colors.blue.shade400;
+
     update();
   }
 

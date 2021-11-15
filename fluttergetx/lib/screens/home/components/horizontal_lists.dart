@@ -31,7 +31,8 @@ class HorizontalLists extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Image.network(
-                                  pictures[index]['hoodei'].toString(),
+                                  product[index]['images'].toString(),
+                                  // product['images'][index].toString().,
                                   fit: BoxFit.cover,
                                   width: MediaQuery.of(context).size.width.w,
                                 ),
@@ -39,7 +40,7 @@ class HorizontalLists extends StatelessWidget {
                               Align(
                                 alignment: Alignment.center,
                                 child: TextWidget(
-                                  text: namee[index]['nam'].toString(),
+                                  text: product[index]['names'].toString(),
                                   color: Colors.grey.withOpacity(0.5),
                                   size: 16.sp,
                                   weight: FontWeight.w400,
@@ -50,7 +51,7 @@ class HorizontalLists extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     TextWidget(
-                                      text: pricee[index]['pri'].toString(),
+                                      text: product[index]['prices'].toString(),
                                       size: 18.sp,
                                       weight: FontWeight.w700,
                                     ),
@@ -69,11 +70,8 @@ class HorizontalLists extends StatelessWidget {
                     ),
                     onTap: () {
                       Get.to(InsidePage(), arguments: {
-                        "rasm": [
-                          pictures[index]['hoodei'].toString(),
-                          namee[index]['nam'].toString(),
-                          pricee[index]['pri'].toString(),
-                        ],
+                        
+                       "info": product[index] ,
                       });
                     });
               })),
@@ -81,28 +79,31 @@ class HorizontalLists extends StatelessWidget {
   }
 }
 
-var pictures = [
-  {
-    "hoodei":
-        "https://images.timberland.com/is/image/timberland/A12CR010-HERO?\$PDP-FULL-IMAGE\$"
-  },
-  {
-    'hoodei':
-        "https://media.tractorsupply.com/is/image/TractorSupplyCompany/1113817?\$456\$"
-  },
-  {
-    'hoodei':
-        "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw3c485f95/1_front_750/00438407-02.jpg?sw=300&sh=450"
-  }
-];
+// var pictures =;
 
-var namee = [
-  {"nam": "Black"},
-  {"nam": "Grey"},
-  {"nam": "Blue"},
-];
-var pricee = [
-  {"pri": "12.50\$"},
-  {"pri": "54.99\$"},
-  {"pri": "100 \$"},
+List<Map<String, dynamic>> product = [
+  {
+    "images":
+        "https://images.timberland.com/is/image/timberland/A12CR010-HERO?\$PDP-FULL-IMAGE\$",
+    "names": "Black",
+    "prices": " 12.50\$",
+    "sizes": "",
+    "colors": "",
+  },
+  {
+    "images":
+        "https://media.tractorsupply.com/is/image/TractorSupplyCompany/1113817?\$456\$",
+    "names": "Grey",    
+    "prices": "54.99\$",
+    "sizes": "",
+    "colors": "",
+  },
+  {
+    "images":
+        "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw3c485f95/1_front_750/00438407-02.jpg?sw=300&sh=450",
+    "names": "Blue",
+    "prices": "100 \$",
+    "sizes": "",
+    "colors": "",
+  }
 ];

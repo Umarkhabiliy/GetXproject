@@ -1,14 +1,16 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttergetx/screens/insidepage/components/button_widget.dart';
+
 import 'package:fluttergetx/screens/insidepage/controller.dart';
 import 'package:fluttergetx/screens/insidepage/inside_page.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class SizesButton extends StatelessWidget {
-  const SizesButton({Key? key}) : super(key: key);
+  SizesButton({Key? key, required this.recieveInfo}) : super(key: key);
+  Map<String, dynamic> recieveInfo;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class SizesButton extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {
                           getButtonController.buttonClicked(index);
+                          recieveInfo['sizes'] = s[index];
                         },
                         child: Container(
                           decoration: BoxDecoration(

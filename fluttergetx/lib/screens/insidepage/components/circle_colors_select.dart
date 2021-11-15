@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttergetx/screens/insidepage/components/button_widget.dart';
 import 'package:fluttergetx/screens/insidepage/controller.dart';
 import 'package:fluttergetx/screens/insidepage/inside_page.dart';
 import 'package:get/get.dart';
 
 class CircleColorsSelect extends StatelessWidget {
-  const CircleColorsSelect({Key? key}) : super(key: key);
+  CircleColorsSelect({Key? key, required this.recieve}) : super(key: key);
+  Map<String, dynamic> recieve;
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ButtonController>(
@@ -21,6 +21,7 @@ class CircleColorsSelect extends StatelessWidget {
                   (index) => GestureDetector(
                     onTap: () {
                       getController.cicrleClicked(index);
+                      recieve['colors'] = circleColors[index];
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -48,3 +49,5 @@ class CircleColorsSelect extends StatelessWidget {
         });
   }
 }
+
+List<Map<String, dynamic>> lst = [];

@@ -4,8 +4,6 @@ import 'package:fluttergetx/screens/insidepage/components/button_widget.dart';
 import 'package:fluttergetx/screens/insidepage/components/circle_colors_select.dart';
 import 'package:fluttergetx/screens/insidepage/components/inside_head.dart';
 import 'package:fluttergetx/screens/insidepage/components/size_butons.dart';
-import 'package:fluttergetx/screens/insidepage/controller.dart';
-import 'package:fluttergetx/screens/listpage/components/controller.dart';
 import 'package:fluttergetx/screens/listpage/list_page.dart';
 import 'package:fluttergetx/widgets/custom_text_widget.dart';
 import 'package:get/get.dart';
@@ -13,25 +11,24 @@ import 'package:get/get.dart';
 class InsidePage extends StatelessWidget {
   InsidePage({Key? key, this.tabController}) : super(key: key);
   TabController? tabController;
+  
 
   @override
   Widget build(BuildContext context) {
-    var npa = Get.arguments['rasm'];
+    var npa = Get.arguments['info'];
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InsideHeaders(tabController: tabController),
-            makeTexts(npa[1].toString(), npa[2].toString()),
-            
-            const CircleColorsSelect(),
+            makeTexts(npa),
+            CircleColorsSelect(recieve: npa),
             textSizeWidget(),
             SizedBox(height: 8.h),
-            const SizesButton(),
+            SizesButton(recieveInfo: npa),
             SizedBox(height: 16.h),
-            const ButtonWidget(),
-            
+            ButtonWidget(allInfo: npa),
             
           ],
         ),
@@ -50,7 +47,7 @@ class InsidePage extends StatelessWidget {
         ));
   }
 
-  makeTexts(textname, price) {
+  makeTexts(textname) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -59,7 +56,7 @@ class InsidePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: TextWidget(
-              text: textname,
+              text: textname['names'],
               size: 36.sp,
               weight: FontWeight.w800,
             ),
@@ -69,7 +66,7 @@ class InsidePage extends StatelessWidget {
             child: Row(
               children: [
                 TextWidget(
-                  text: price,
+                  text: textname['prices'],
                   size: 24.sp,
                   color: Colors.black87,
                   weight: FontWeight.w500,

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttergetx/screens/insidepage/components/circle_colors_select.dart';
 
 import 'package:fluttergetx/screens/listpage/components/controller.dart';
 import 'package:fluttergetx/widgets/custom_text_widget.dart';
 import 'package:get/get.dart';
 
-class ListPage extends GetWidget<Addcart> {
+class ListPage extends StatelessWidget {
   ListPage({Key? key}) : super(key: key);
 
   final Addcart count = Get.put(Addcart());
-  final info = Get.arguments();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +37,7 @@ class ListPage extends GetWidget<Addcart> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(4),
                                     child: Image.network(
-                                      "https://cdn.shopify.com/s/files/1/0011/4651/9637/products/blue2_1000x_074c70e2-fccb-4ea1-84ef-5535303c1927_250x.png?v=1606191189",
+                                      lst[index]['images'].toString(),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -49,7 +50,7 @@ class ListPage extends GetWidget<Addcart> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8.0),
                                     child: TextWidget(
-                                      text: "title",
+                                      text: lst[index]['names'].toString(),
                                       size: 16.sp,
                                       weight: FontWeight.w400,
                                     ),
@@ -57,7 +58,7 @@ class ListPage extends GetWidget<Addcart> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextWidget(
-                                      text: "subtitle",
+                                      text: lst[index]['sizes'].toString(),
                                       size: 16.sp,
                                       color: Colors.grey.withOpacity(0.5),
                                       weight: FontWeight.w400,
@@ -71,49 +72,36 @@ class ListPage extends GetWidget<Addcart> {
                                           MainAxisAlignment.spaceAround,
                                       children: [
                                         TextWidget(
-                                          text: "price",
+                                          text: lst[index]['prices'].toString(),
                                           weight: FontWeight.w600,
                                           size: 20.sp,
                                         ),
+                                        SizedBox(width: 120.w),
                                         SizedBox(
-                                          width: 120.w,
+                                          child: Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  count.count("-", index);
+                                                },
+                                                child: TextWidget(
+                                                  text: "- ",
+                                                  size: 30.sp,
+                                                ),
+                                              ),
+                                              
+                                              GestureDetector(
+                                                onTap: () {
+                                                  count.count("+", index);
+                                                },
+                                                child: TextWidget(color: Colors.black,
+                                                  text: " +",
+                                                  size: 25.sp,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        // Row(
-                                        //   children: [
-                                        //     GestureDetector(
-                                        //       onTap: () {
-                                        //         count.count("-", index);
-                                        //       },
-                                        //       child: TextWidget(
-                                        //         text: "- ",
-                                        //         size: 30.sp,
-                                        //       ),
-                                        //     ),
-                                        //     Container(
-                                        //         decoration: BoxDecoration(
-                                        //             color: Colors.blueGrey.shade50,
-                                        //             borderRadius:
-                                        //                 BorderRadius.circular(2)),
-                                        //         child: Padding(
-                                        //           padding:
-                                        //               const EdgeInsets.symmetric(
-                                        //                   horizontal: 8.0),
-                                        //           child: TextWidget(
-                                        //               text: getSnap
-                                        //                   .listTiles[index].counter
-                                        //                   .toString()),
-                                        //         )),
-                                        //     GestureDetector(
-                                        //       onTap: () {
-                                        //         count.count("+", index);
-                                        //       },
-                                        //       child: TextWidget(
-                                        //         text: " +",
-                                        //         size: 25.sp,
-                                        //       ),
-                                        //     ),
-                                        //   ],
-                                        // ),
                                       ],
                                     ),
                                   )
